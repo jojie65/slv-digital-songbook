@@ -1,18 +1,133 @@
+/* ============================================================
+   LITURGICAL SEASON / COLOR THEME
+   Change the class on <body> in index.html each week to match
+   the liturgical season or celebration:
+
+     season-ordinary   -> Ordinary Time             (green)
+     season-lent       -> Lent                      (light violet)
+     season-advent     -> Advent                    (dark violet)
+     season-feast      -> Feasts of martyrs/saints   (red)
+     season-marian     -> Marian celebrations        (light blue)
+     season-christmas  -> Christmas season           (white/gold)
+     season-easter     -> Easter season              (white/gold)
+     season-rose        -> Gaudete/Laetare Sunday      (rose pink)
+        (3rd Sunday of Advent & 4th Sunday of Lent only)
+
+   Everything else in the page reads these variables, so
+   switching the body class re-colors the whole songbook.
+
+   --color-header-text and --color-card-accent normally just
+   mirror the season color, but the white seasons override them
+   separately -- plain white text on a white header, or a white
+   accent bar on a white card, would be invisible otherwise.
+
+   The Gloria is also auto-hidden during season-advent,
+   season-lent, and season-rose (see .omit-lent-advent below) --
+   no manual edit needed for that on a per-week basis.
+   ============================================================ */
+
+:root{
+    --color-primary: #0b6e4f;
+    --color-primary-dark: #054d37;
+    --color-accent: #c9a227;
+    --color-header-text: white;
+    --color-card-accent: var(--color-primary);
+    --color-bg: #faf8f2;
+    --color-card-bg: #ffffff;
+    --color-text: #2b2b2b;
+    --color-border: #e6e0d0;
+}
+
+body.season-ordinary{
+    --color-primary: #0b6e4f;
+    --color-primary-dark: #054d37;
+    --color-accent: #c9a227;
+    --color-header-text: white;
+    --color-card-accent: var(--color-primary);
+}
+
+body.season-lent{
+    --color-primary: #8e6fa8;
+    --color-primary-dark: #5f4079;
+    --color-accent: #c9a227;
+    --color-header-text: white;
+    --color-card-accent: var(--color-primary);
+}
+
+body.season-advent{
+    --color-primary: #4b2e6f;
+    --color-primary-dark: #301c49;
+    --color-accent: #c9a227;
+    --color-header-text: white;
+    --color-card-accent: var(--color-primary);
+}
+
+body.season-feast{
+    --color-primary: #a31621;
+    --color-primary-dark: #6e0f17;
+    --color-accent: #c9a227;
+    --color-header-text: white;
+    --color-card-accent: var(--color-primary);
+}
+
+body.season-marian{
+    --color-primary: #5b9bd5;
+    --color-primary-dark: #2f6b8f;
+    --color-accent: #c9a227;
+    --color-header-text: white;
+    --color-card-accent: var(--color-primary);
+}
+
+body.season-christmas{
+    --color-primary: #fdfbf3;
+    --color-primary-dark: #d9c98a;
+    --color-accent: #b8860b;
+    --color-header-text: #6b5115;
+    --color-card-accent: var(--color-accent);
+}
+
+body.season-easter{
+    --color-primary: #fffefb;
+    --color-primary-dark: #e6cf7a;
+    --color-accent: #d4af37;
+    --color-header-text: #7a5c00;
+    --color-card-accent: var(--color-accent);
+}
+
+body.season-rose{
+    --color-primary: #e8a2b0;
+    --color-primary-dark: #c06c82;
+    --color-accent: #c9a227;
+    --color-header-text: white;
+    --color-card-accent: var(--color-primary);
+}
+
+
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     font-family: Arial, Helvetica, sans-serif;
-    max-width: 700px;
+    max-width: 760px;
     margin:auto;
-    padding: 20px;
+    padding: 0 20px 40px;
 
-    background-color: white;
-    color: #222;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 
     line-height: 1.7;
 }
 
 h1{
     text-align: center;
-    color: darkgreen;
+    color: var(--color-header-text);
+    margin: 0 -20px 20px;
+    padding: 28px 20px 24px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: 0 0 18px 18px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
 
 h2{
@@ -20,21 +135,39 @@ h2{
     font-weight: normal;
 }
 
+.mass-date{
+    display: inline-block;
+    color: var(--color-accent);
+    font-size: smaller;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
 h3{
-    color: darkgreen;
+    color: var(--color-primary-dark);
     margin-top: 60px;
+    margin-bottom: 8px;
+    padding: 6px 14px;
+    display: inline-block;
+    background: color-mix(in srgb, var(--color-primary) 12%, white);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 4px;
+    letter-spacing: 0.5px;
 }
 
 h4{
     font-size: 22px;
     margin-top: 5px;
     margin-bottom: 15px;
+    color: var(--color-primary-dark);
 }
 
 hr{
-    margin: 50px 0;
+    margin: 46px auto 0;
     border: none;
-    border-top: 1px solid #cccccc;
+    border-top: 3px solid var(--color-accent);
+    width: 56px;
+    opacity: 0.55;
 }
 
 .lyrics{
@@ -43,32 +176,81 @@ hr{
     white-space: normal;
     text-align: left;
     margin-bottom: 20px;
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    box-shadow: inset 3px 0 0 var(--color-card-accent), 0 1px 4px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    padding: 16px 18px;
+}
+
+@media (max-width: 480px){
+    .lyrics{
+        font-size: 18px;
+        padding: 14px 12px;
+    }
 }
 
 .top-button{
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: darkgreen;
-    color: white;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-header-text);
     text-decoration: none;
     padding: 14px 18px;
     border-radius: 30px;
     font-size: 18px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    border: 2px solid var(--color-accent);
 }
 
 .qr-section{
     text-align: center;
     margin: 20px 0 30px 0;
+    padding: 16px;
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+}
+
+.qr-section p{
+    margin-top: 0;
+    color: var(--color-primary-dark);
 }
 
 .qr-code{
     width: 180px;
     max-width: 60%;
     height: auto;
-    border: 1px solid #cccccc;
+    border: 1px solid var(--color-border);
     padding: 8px;
     border-radius: 12px;
     background: white;
+}
+
+.top-button:focus-visible,
+a:focus-visible{
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* The Gloria is omitted during Advent and Lent (including the
+   rose Sundays, which fall within those seasons) -- so hide the
+   whole Gloria section, including its own divider, whenever one
+   of those body classes is active. */
+body.season-advent .omit-lent-advent,
+body.season-lent .omit-lent-advent,
+body.season-rose .omit-lent-advent{
+    display: none;
+}
+
+@media print{
+    .top-button, .qr-section{
+        display: none;
+    }
+    h1{
+        background: none;
+        color: var(--color-primary-dark);
+        box-shadow: none;
+    }
 }

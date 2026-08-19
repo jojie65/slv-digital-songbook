@@ -6,23 +6,36 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>SLV Digital Songbook</title>
 
+     <!-- PWA -->
+     <link rel="manifest" href="manifest.json">
+     <meta name="theme-color" content="#006400">
+     <meta name="apple-mobile-web-app-capable" content="yes">
+     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+     <meta name="apple-mobile-web-app-title" content="SLV Songbook">
+     <link rel="apple-touch-icon" href="images/icon-192.png">
+     <link rel="icon" href="images/icon-192.png">
+
      <link rel="stylesheet" href="style.css">
 
 </head>
-<body>
-    
+<!--
+     Change this class each week to match the liturgical season/celebration:
+     season-ordinary (green) | season-lent (light violet) | season-advent (dark violet)
+     season-feast (red, for martyrs/saints) | season-marian (light blue)
+     season-christmas (white/gold) | season-easter (white/gold)
+     season-rose (rose pink, Gaudete/Laetare Sunday only)
+-->
+<body class="season-ordinary">
+
      <h1 id="top">SLV Digital Songbook</h1>
-     
+
      <div class="qr-section">
      <p><strong>Scan to open on your phone</strong></p>
      <img src="images/slv-qrcode.png" alt="SLV Digital Songbook QR Code" class="qr-code">
      </div>
-     
+
      <h2>21st Sunday in Ordinary Time, Year A<br>
-                  <span style="color: brown; 
-                  font-size:smaller; 
-                  font-family:Georgia, 'Times New Roman', Times, serif"; 
-                  font-style: bold;  >
+                  <span class="mass-date">
                   August 23, 2026
                </span>
      </h2>
@@ -61,11 +74,11 @@
           Christ have mercy<br>
           Lord have mercy<br>
           Lord have mercy<br>
-          
-
      </div>
 
      <hr>
+
+     <section class="gloria omit-lent-advent">
 
      <h3>GLORIA</h3>
 
@@ -103,12 +116,14 @@
                             In the glory of God the Father <sub>(Ant)</sub><br><br>
 
                             A - - men, a - men.
-          
+
      </div>
 
      <hr>
 
-     <h3><i>Responsorial Psalm </i></h3>
+     </section>
+
+     <h3><i>Responsorial Psalm</i></h3>
 
      <h4> 
           "Lord, Your love is eternal;
@@ -231,7 +246,6 @@
 
      </div>
 
-
      <hr>
 
      <h3>AGNUS DEI</h3>
@@ -285,8 +299,6 @@
 
      </div>
 
-     <script src="script.js"></script>
-
      <hr>
 
      <h3>RECESSIONAL</h3>
@@ -314,17 +326,11 @@
                            Has called us to be  <br>
                            A light for His people <br>
                            To set their hearts free. <sub>(Refrain)</sub>
-
-
-
-
-
      </div>
 
+     <a href="#top" class="top-button" aria-label="Back to top">⬆ Top</a>
+
+     <script src="script.js"></script>
 
 </body>
-
-<a href="#top" class="top-button">⬆ Top</a>
-
-     
 </html>
